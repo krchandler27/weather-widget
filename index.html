@@ -31,6 +31,15 @@
                 <li>history</li>
             </ul>
         </div>
+
+        <div class="col-12 col-md-8 col-lg-9">
+            <section class="container my-5 bg-dark text-light">
+                <div class="row weather">
+                    <h1 id=cityName><span id="weather-icon"></span></h1>
+                    <p class='hide date1'>Date: <span id="date"></span></p>
+                    <p class='hide temperature'>Temp: <span id="temp"></span> °F</p>
+                    <p class='hide windSpeed'>Wind: <span id="wind"></span> MPH</p>
+                    <p class='hide humidity1'>Humidity: <span id="humidity"></span>% </p>
         <!-- Use col-* classes for different column sizes on different screens -->
         <div class="col-12 col-md-8 col-lg-9">
             <section class="container my-5 bg-dark text-light">
@@ -81,6 +90,8 @@
 <!-- Four column layout -->
 
 <script src="assets/js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
 
 <body>
 
