@@ -33,10 +33,24 @@ function getAPI(event) {
             wind.textContent = data.wind.speed;
             humidity.textContent = data.main.humidity;
             date.textContent = dayjs().format('MM/DD/YYYY');
+            saveCity(city);
+            // add fetch for second API
         })
 }
 
+function saveCity(CAPcity) {
+    city = document.getElementById('searchBox').value;
+    var searchedCities = JSON.parse(localStorage.getItem(cityName)) || []
+    searchedCities.push(CAPcity);
+    window.localStorage.setItem('searchedCities', JSON.stringify(searchedCities));
+}
+// saveCity function:
+// 1. get the list of searched cities from localstorage (localstorage.getItem('searchedCities') --> want to use JSON.parse to transform into an object/array
+// 2. add the new city to the array of cities
+// 3. set the localstorage to the new array of cities
+
 submitBtn.addEventListener('click', getAPI);
+// submitBtn.addEventListener('click', saveCity(city));
 
 searchBox.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
