@@ -10,10 +10,9 @@ var searchBox = document.getElementById('searchBox');
 var date = document.getElementById('date');
 var weatherIcon = document.getElementById('weather-icon');
 
-function getAPI(event) {
-    city = document.getElementById('searchBox').value;
+function getAPI(event, prevCity) {
+    city = prevCity || document.getElementById('searchBox').value;
     queryURL = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + APIKey + '&units=imperial'
-    event.preventDefault();
     var CAPcity = city.charAt(0).toUpperCase() + city.slice(1);
 
     fetch(queryURL)
@@ -32,25 +31,58 @@ function getAPI(event) {
             temp.textContent = data.main.temp;
             wind.textContent = data.wind.speed;
             humidity.textContent = data.main.humidity;
+            var lat = data.coord.lat;
+            var lon = data.coord.lon;
             date.textContent = dayjs().format('MM/DD/YYYY');
-            saveCity(city);
-            // add fetch for second API
+            saveCity(CAPcity);
+           fiveDay(lat, lon);
         })
 }
 
+function fiveDay(lat, lon) {
+    var queryURL2 = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}&units=imperial`
+    fetch(queryURL2)
+        .then(function (response) {
+            console.log(response);
+            return response.json();
+        })
+        .then(function (data){
+           var tempDay1 = document.getElementById('tempDay1');
+           var windDay1 = document.getElementById('windDay1');
+           var humidityDay1 = document.getElementById('humidityDay1');
+            console.log(data);
+            tempDay1.data.list[2].main.temp;
+            windDay1.data.list[2].wind.speed;
+            humidityDay1.data.list[2].main.humidity;
+        })
+}
+
+displayHistory();
+
 function saveCity(CAPcity) {
     city = document.getElementById('searchBox').value;
-    var searchedCities = JSON.parse(localStorage.getItem(cityName)) || []
+    var searchedCities = JSON.parse(localStorage.getItem('searchedCities')) || []
     searchedCities.push(CAPcity);
     window.localStorage.setItem('searchedCities', JSON.stringify(searchedCities));
+    displayHistory();
 }
-// saveCity function:
-// 1. get the list of searched cities from localstorage (localstorage.getItem('searchedCities') --> want to use JSON.parse to transform into an object/array
-// 2. add the new city to the array of cities
-// 3. set the localstorage to the new array of cities
+
+function displayHistory() {
+    var searchedCities = JSON.parse(localStorage.getItem('searchedCities')) || []
+    document.getElementById('oldCities').innerHTML = ""
+    for (var i = searchedCities.length-1; i >= searchedCities.length-5; i--) {
+        var listItem = document.createElement('button');
+        listItem.setAttribute('class', 'searchedCities');
+        listItem.innerText = searchedCities[i];
+        listItem.addEventListener('click', function (event) {
+            var city = event.target.innerText;
+            getAPI(null, city);
+        });
+        document.getElementById('oldCities').appendChild(listItem);
+    }
+}
 
 submitBtn.addEventListener('click', getAPI);
-// submitBtn.addEventListener('click', saveCity(city));
 
 searchBox.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {

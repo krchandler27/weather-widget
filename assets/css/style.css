@@ -3,9 +3,18 @@
     color: white;
     text-align: center;
    line-height: 75px;
-
 }
 
 .hide {
     display: none;
+}
+
+#oldCities {
+    display: flex;
+   flex-direction: column;
+}
+
+.searchedCities {
+margin-top: 5px;
+margin-bottom: 5px;
 }
