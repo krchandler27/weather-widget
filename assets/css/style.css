@@ -2,7 +2,7 @@
     background: blue;
     color: white;
     text-align: center;
-   line-height: 75px;
+    line-height: 75px;
 }
 
 .hide {
@@ -11,10 +11,16 @@
 
 #oldCities {
     display: flex;
-   flex-direction: column;
+    flex-direction: column;
 }
 
 .searchedCities {
-margin-top: 5px;
-margin-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#submitBtn {
+    display: flex;
+    margin: auto;
+    margin-bottom: 5px;
 }
