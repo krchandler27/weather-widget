@@ -14,7 +14,7 @@ function getAPI(event, prevCity) {
     city = prevCity || document.getElementById('searchBox').value;
     queryURL = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + APIKey + '&units=imperial'
     var CAPcity = city.charAt(0).toUpperCase() + city.slice(1);
-    
+
 
     fetch(queryURL)
         .then(function (response) {
@@ -44,13 +44,51 @@ function fiveDay(lat, lon) {
             return response.json();
         })
         .then(function (data) {
+            console.log(data);
+            var dateDay1 = document.getElementById('dateDay1');
             var tempDay1 = document.getElementById('tempDay1');
             var windDay1 = document.getElementById('windDay1');
             var humidityDay1 = document.getElementById('humidityDay1');
-            console.log(data);
+            dateDay1.textContent = data.list[2].dt_txt;
             tempDay1.textContent = data.list[2].main.temp;
             windDay1.textContent = data.list[2].wind.speed;
             humidityDay1.textContent = data.list[2].main.humidity;
+
+            var dateDay2 = document.getElementById('dateDay2');
+            var tempDay2 = document.getElementById('tempDay2');
+            var windDay2 = document.getElementById('windDay2');
+            var humidityDay2 = document.getElementById('humidityDay2');
+            dateDay2.textContent = data.list[10].dt_txt;
+            tempDay2.textContent = data.list[10].main.temp;
+            windDay2.textContent = data.list[10].wind.speed;
+            humidityDay2.textContent = data.list[10].main.humidity;
+
+            var dateDay3 = document.getElementById('dateDay3');
+            var tempDay3 = document.getElementById('tempDay3');
+            var windDay3 = document.getElementById('windDay3');
+            var humidityDay3 = document.getElementById('humidityDay3');
+            dateDay3.textContent = data.list[18].dt_txt;
+            tempDay3.textContent = data.list[18].main.temp;
+            windDay3.textContent = data.list[18].wind.speed;
+            humidityDay3.textContent = data.list[18].main.humidity;
+
+            var dateDay4 = document.getElementById('dateDay4');
+            var tempDay4 = document.getElementById('tempDay4');
+            var windDay4 = document.getElementById('windDay4');
+            var humidityDay4 = document.getElementById('humidityDay4');
+            dateDay4.textContent = data.list[26].dt_txt;
+            tempDay4.textContent = data.list[26].main.temp;
+            windDay4.textContent = data.list[26].wind.speed;
+            humidityDay4.textContent = data.list[26].main.humidity;
+
+            var dateDay5 = document.getElementById('dateDay5');
+            var tempDay5 = document.getElementById('tempDay5');
+            var windDay5 = document.getElementById('windDay5');
+            var humidityDay5 = document.getElementById('humidityDay5');
+            dateDay5.textContent = data.list[34].dt_txt;
+            tempDay5.textContent = data.list[34].main.temp;
+            windDay5.textContent = data.list[34].wind.speed;
+            humidityDay5.textContent = data.list[34].main.humidity;
         })
 }
 
@@ -79,7 +117,7 @@ function displayHistory() {
     }
 }
 
-function displayInfo () {
+function displayInfo() {
     document.getElementById('searchBox').placeholder = 'Type city name here';
 }
 displayInfo();
