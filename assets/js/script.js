@@ -8,11 +8,11 @@ var wind = document.getElementById('wind');
 var humidity = document.getElementById('humidity');
 var searchBox = document.getElementById('searchBox');
 var date = document.getElementById('date');
-var weatherIcon = document.getElementById('weather-icon');
+
 
 function getAPI(event, prevCity) {
     city = prevCity || document.getElementById('searchBox').value;
-    queryURL = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + APIKey + '&units=imperial'
+    queryURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + APIKey + '&units=imperial'
     var CAPcity = city.charAt(0).toUpperCase() + city.slice(1);
 
 
@@ -23,8 +23,12 @@ function getAPI(event, prevCity) {
         })
         .then(function (data) {
             console.log(data);
+            var currentIconDay0 = data.weather[0].icon;
+            var weatherIconDay0 = document.getElementById('weatherIconDay0');
+            var img0 = document.createElement("img");
+            img0.src = 'https://openweathermap.org/img/w/' + currentIconDay0 + '.png'
+            weatherIconDay0.appendChild(img0);
             cityName.textContent = CAPcity;
-            weatherIcon.textContent = data.weather[0].main;
             temp.textContent = data.main.temp;
             wind.textContent = data.wind.speed;
             humidity.textContent = data.main.humidity;
@@ -37,7 +41,7 @@ function getAPI(event, prevCity) {
 }
 
 function fiveDay(lat, lon) {
-    var queryURL2 = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}&units=imperial`
+    var queryURL2 = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}&units=imperial`
     fetch(queryURL2)
         .then(function (response) {
             console.log(response);
@@ -46,6 +50,11 @@ function fiveDay(lat, lon) {
         .then(function (data) {
             console.log(data);
             var dateDay1 = document.getElementById('dateDay1');
+            var currentIconDay1 = data.list[2].weather[0].icon;
+            var weatherIconDay1 = document.getElementById('weatherIconDay1');
+            var img1 = document.createElement("img");
+            img1.src = 'https://openweathermap.org/img/w/' + currentIconDay1 + '.png'
+            weatherIconDay1.appendChild(img1);
             var tempDay1 = document.getElementById('tempDay1');
             var windDay1 = document.getElementById('windDay1');
             var humidityDay1 = document.getElementById('humidityDay1');
@@ -55,6 +64,11 @@ function fiveDay(lat, lon) {
             humidityDay1.textContent = data.list[2].main.humidity;
 
             var dateDay2 = document.getElementById('dateDay2');
+            var currentIconDay2 = data.list[10].weather[0].icon;
+            var weatherIconDay2 = document.getElementById('weatherIconDay2');
+            var img2 = document.createElement("img");
+            img2.src = 'https://openweathermap.org/img/w/' + currentIconDay2 + '.png'
+            weatherIconDay2.appendChild(img2);
             var tempDay2 = document.getElementById('tempDay2');
             var windDay2 = document.getElementById('windDay2');
             var humidityDay2 = document.getElementById('humidityDay2');
@@ -64,6 +78,11 @@ function fiveDay(lat, lon) {
             humidityDay2.textContent = data.list[10].main.humidity;
 
             var dateDay3 = document.getElementById('dateDay3');
+            var currentIconDay3 = data.list[18].weather[0].icon;
+            var weatherIconDay3 = document.getElementById('weatherIconDay3');
+            var img3 = document.createElement("img");
+            img3.src = 'https://openweathermap.org/img/w/' + currentIconDay3 + '.png'
+            weatherIconDay3.appendChild(img3);
             var tempDay3 = document.getElementById('tempDay3');
             var windDay3 = document.getElementById('windDay3');
             var humidityDay3 = document.getElementById('humidityDay3');
@@ -73,6 +92,11 @@ function fiveDay(lat, lon) {
             humidityDay3.textContent = data.list[18].main.humidity;
 
             var dateDay4 = document.getElementById('dateDay4');
+            var currentIconDay4 = data.list[26].weather[0].icon;
+            var weatherIconDay4 = document.getElementById('weatherIconDay4');
+            var img4 = document.createElement("img");
+            img4.src = 'https://openweathermap.org/img/w/' + currentIconDay4 + '.png'
+            weatherIconDay4.appendChild(img4);
             var tempDay4 = document.getElementById('tempDay4');
             var windDay4 = document.getElementById('windDay4');
             var humidityDay4 = document.getElementById('humidityDay4');
@@ -82,6 +106,11 @@ function fiveDay(lat, lon) {
             humidityDay4.textContent = data.list[26].main.humidity;
 
             var dateDay5 = document.getElementById('dateDay5');
+            var currentIconDay5 = data.list[34].weather[0].icon;
+            var weatherIconDay5 = document.getElementById('weatherIconDay5');
+            var img5 = document.createElement("img");
+            img5.src = 'https://openweathermap.org/img/w/' + currentIconDay5 + '.png'
+            weatherIconDay5.appendChild(img5);
             var tempDay5 = document.getElementById('tempDay5');
             var windDay5 = document.getElementById('windDay5');
             var humidityDay5 = document.getElementById('humidityDay5');
