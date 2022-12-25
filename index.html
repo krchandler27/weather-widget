@@ -10,83 +10,81 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link rel="shortcut icon" href="./assets/images/favicon.JPG">
 </head>
-<header>
+<header class="bg-primary">
     <h1 id="weather-dashboard">Weather Dashboard</h1>
 </header>
 
 <body>
-    <section class="container my-5">
+    <section class="container">
         <div class="row">
-            <div class="col-12 col-md-4 col-lg-3">
-                <h3 class='sideDiv'>Search for a City:<br><br>
+            <div class="col-sm-3 sideNav">
+                <h3 class="space">Search for a City:
+                    <br>
                     <input type="search" id="searchBox">
-                    <br><br>
-                    <input type="submit" id="submitBtn">
+                    <input type="submit" value="Search" id="submitBtn">
                 </h3>
                 <ul id="oldCities">
                 </ul>
             </div>
 
-            <div class="col-12 col-md-8 col-lg-9">
-                <section class="container my-5 bg-dark text-light">
-                    <div class="row weather">
-                        <h1 id=cityName></h1>
-                        <p>Daily Forecast:<h1 id="weatherIconDay0"></h1></p>
-                       
+            <div class="col-sm-9 my-5  border">
+                <div class="row">
+                    <h1>Today's Highlights</h1>
+                    <h1 id=cityName></h1>
+                    <div class="border">
                         <p class='date1'>Date: <span id="date"></span></p>
+                        <h1 id="weatherIconDay0"></h1>
                         <p class='temperature'>Temp: <span id="temp"></span> °F</p>
                         <p class='windSpeed'>Wind: <span id="wind"></span> MPH</p>
                         <p class='humidity1'>Humidity: <span id="humidity"></span>% </p>
+                    </div>
+                </div>
 
+                <div class="row p-3 my-3 bg-primary text-white">
+                    <h1 class="fiveDay">5-Day Forecast</h1>
+                    <div class="col-sm border" id="weather-box">
+                        <p>Date: <span id="dateDay1"></span></p>
+                        <p id="weatherIconDay1"></p>
+                        <p>Temp: <span id="tempDay1"></span> °F</p>
+                        <p>Wind: <span id="windDay1"></span> MPH</p>
+                        <p>Humidity: <span id="humidityDay1"></span>% </p>
+                    </div>
+                    <div class="col-sm border">
+                        <p>Date: <span id="dateDay2"></span></p>
+                        <p id="weatherIconDay2"></p>
+                        <p>Temp: <span id="tempDay2"></span> °F</p>
+                        <p>Wind: <span id="windDay2"></span> MPH</p>
+                        <p>Humidity: <span id="humidityDay2"></span>% </p>
+                    </div>
+                    <div class="col-sm border">
+                        <p>Date: <span id="dateDay3"></span></p>
+                        <p id="weatherIconDay3"></p>
+                        <p>Temp: <span id="tempDay3"></span> °F</p>
+                        <p>Wind: <span id="windDay3"></span> MPH</p>
+                        <p>Humidity: <span id="humidityDay3"></span>% </p>
+                    </div>
+                    <div class="col-sm border">
+                        <p>Date: <span id="dateDay4"></span></p>
+                        <p id="weatherIconDay4"></p>
+                        <p>Temp: <span id="tempDay4"></span> °F</p>
+                        <p>Wind: <span id="windDay4"></span> MPH</p>
+                        <p>Humidity: <span id="humidityDay4"></span>% </p>
+                    </div>
+                    <div class="col-sm border">
+                        <p>Date: <span id="dateDay5"></span></p>
+                        <p id="weatherIconDay5"></p>
+                        <p>Temp: <span id="tempDay5"></span> °F</p>
+                        <p>Wind: <span id="windDay5"></span> MPH</p>
+                        <p>Humidity: <span id="humidityDay5"></span>% </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        
-                            <section class="container p-3 my-3 bg-primary text-white"> 5-Day Forecast:
-                                <div class="row">
-                                    <div class="col" id="weather-box">
-                                        <p class='date1'>Date: <span id="dateDay1"></span></p>
-                                        <p id="weatherIconDay1"></p>
-                                        <p class='temperature'>Temp: <span id="tempDay1"></span> °F</p>
-                                        <p class='windSpeed'>Wind: <span id="windDay1"></span> MPH</p>
-                                        <p class='humidity1'>Humidity: <span id="humidityDay1"></span>% </p>
-                                    </div>
-                                    <div class="col">
-                                        <p class='date1'>Date: <span id="dateDay2"></span></p>
-                                        <p id="weatherIconDay2"></p>
-                                        <p class='temperature'>Temp: <span id="tempDay2"></span> °F</p>
-                                        <p class='windSpeed'>Wind: <span id="windDay2"></span> MPH</p>
-                                        <p class='humidity1'>Humidity: <span id="humidityDay2"></span>% </p>
-                                    </div>
-                                    <div class="col">
-                                        <p class='date1'>Date: <span id="dateDay3"></span></p>
-                                        <p id="weatherIconDay3"></p>
-                                        <p class='temperature'>Temp: <span id="tempDay3"></span> °F</p>
-                                        <p class='windSpeed'>Wind: <span id="windDay3"></span> MPH</p>
-                                        <p class='humidity1'>Humidity: <span id="humidityDay3"></span>% </p>
-                                    </div>
-                                    <div class="col">
-                                        <p class='date1'>Date: <span id="dateDay4"></span></p>
-                                        <p id="weatherIconDay4"></p>
-                                        <p class='temperature'>Temp: <span id="tempDay4"></span> °F</p>
-                                        <p class='windSpeed'>Wind: <span id="windDay4"></span> MPH</p>
-                                        <p class='humidity1'>Humidity: <span id="humidityDay4"></span>% </p>
-                                    </div>
-                                    <div class="col">
-                                        <p class='date1'>Date: <span id="dateDay5"></span></p>
-                                        <p id="weatherIconDay5"></p>
-                                        <p class='temperature'>Temp: <span id="tempDay5"></span> °F</p>
-                                        <p class='windSpeed'>Wind: <span id="windDay5"></span> MPH</p>
-                                        <p class='humidity1'>Humidity: <span id="humidityDay5"></span>% </p>
-                                    </div>
-                                </div>
-                            </section>
-
-
-                        </div>
-                </section>
-
-                <script src="assets/js/script.js"></script>
-                <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
-                    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
 </body>
 
 </html>

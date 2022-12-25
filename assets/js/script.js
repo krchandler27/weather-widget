@@ -23,6 +23,7 @@ function getAPI(event, prevCity) {
         })
         .then(function (data) {
             console.log(data);
+            document.getElementById("weatherIconDay0").innerHTML = "";
             var currentIconDay0 = data.weather[0].icon;
             var weatherIconDay0 = document.getElementById('weatherIconDay0');
             var img0 = document.createElement("img");
@@ -49,6 +50,14 @@ function fiveDay(lat, lon) {
         })
         .then(function (data) {
             console.log(data);
+
+            // Clear appended weather icons
+            document.getElementById("weatherIconDay1").innerHTML = "";
+            document.getElementById("weatherIconDay2").innerHTML = "";
+            document.getElementById("weatherIconDay3").innerHTML = "";
+            document.getElementById("weatherIconDay4").innerHTML = "";
+            document.getElementById("weatherIconDay5").innerHTML = "";
+
             var dateDay1 = document.getElementById('dateDay1');
             var currentIconDay1 = data.list[2].weather[0].icon;
             var weatherIconDay1 = document.getElementById('weatherIconDay1');
@@ -147,7 +156,7 @@ function displayHistory() {
 }
 
 function displayInfo() {
-    document.getElementById('searchBox').placeholder = 'Type city name here';
+    document.getElementById('searchBox').placeholder = 'Mesa';
 }
 displayInfo();
 
