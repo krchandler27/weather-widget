@@ -133,9 +133,10 @@ function fiveDay(lat, lon) {
 displayHistory();
 
 function saveCity(CAPcity) {
-    city = document.getElementById('searchBox').value;
     var searchedCities = JSON.parse(localStorage.getItem('searchedCities')) || []
-    searchedCities.push(CAPcity);
+    if (!searchedCities.includes(CAPcity)) {
+        searchedCities.push(CAPcity);
+    }
     window.localStorage.setItem('searchedCities', JSON.stringify(searchedCities));
     displayHistory();
 }
@@ -143,7 +144,10 @@ function saveCity(CAPcity) {
 function displayHistory() {
     var searchedCities = JSON.parse(localStorage.getItem('searchedCities')) || []
     document.getElementById('oldCities').innerHTML = ""
-    for (var i = searchedCities.length - 1; i >= searchedCities.length - 5; i--) {
+    for (var i = searchedCities.length-1; i >= searchedCities.length-5; i--) {
+        if (!searchedCities[i]) {
+            break;
+        }
         var listItem = document.createElement('button');
         listItem.setAttribute('class', 'searchedCities');
         listItem.innerText = searchedCities[i];
